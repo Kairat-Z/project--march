@@ -1,0 +1,13 @@
+api: 
+  name: api
+  port: 3000
+  replicas: 3
+  image: zhkairat2/api
+  tag: 0.0.1
+cm:
+  name: api-config
+  databaseHost: mysql
+  databaseName: mydatabase
+secret:
+  name: api-secret
+
