@@ -4,4 +4,7 @@ web:
   image: zhkairat2/web
   tag: 0.0.2
   port: 3000
+env:
+  name: web-config
+  port: 3000
   apiHost: http://api:3001

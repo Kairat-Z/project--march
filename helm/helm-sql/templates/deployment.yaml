@@ -15,18 +15,30 @@ spec:
     spec:
       containers:
         - name: mysql
-          image: mysql:latest
+          image: {{ .Values.mysql.image }}
           ports:
             - containerPort: 3306
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "kaizen"
-            - name: MYSQL_DATABASE
-              value: "mydb"
-            - name: MYSQL_USER
-              value: "mydbuser"
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_ROOT_PASSWORD
             - name: MYSQL_PASSWORD
-              value: "mydbpass"
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: MYSQL_DATABASE
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: mysql-config
+                  key: MYSQL_USER
           volumeMounts:
             - name: mysql-pv
               mountPath: /var/lib/mysql
@@ -37,4 +49,4 @@ spec:
         accessModes: ["ReadWriteOnce"]
         resources:
           requests:
-            storage: 1Gi
+            storage: {{ .Values.mysql.storage }}

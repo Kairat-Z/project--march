@@ -21,6 +21,7 @@ spec:
         - containerPort: {{ .Values.web.port }}
         env:
         - name: PORT
-          value: "3000"
-        - name: API_HOST
-          value: http://api:3001
+          valueFrom:
+            configMapKeyRef:
+              name: web-config
+              key: PORT

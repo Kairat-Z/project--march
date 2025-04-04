@@ -9,27 +9,27 @@ provider "kubernetes" {
   token                  = data.google_client_config.default.access_token
 }
 
-resource "helm_release" "web" {
-  name       = "web"
-  chart      = "../helm/helm-web"  # Path to your Web chart directory
-  version    = "0.1.0"
-  namespace  = "default"
-  # timeout    = 1200  # Timeout increased to 1200 seconds (20 minutes)
+# resource "helm_release" "web" {
+#   name       = "web"
+#   chart      = "../helm/helm-web"  # Path to your Web chart directory
+#   version    = "0.1.0"
+#   namespace  = "default"
+#   # timeout    = 1200  # Timeout increased to 1200 seconds (20 minutes)
 
-}
+# }
 
-resource "helm_release" "api" {
-  name       = "api"
-  chart      = "../helm/helm-api"  # Path to your API chart directory
-  version    = "0.1.0"
-  namespace  = "default"
-  # timeout    = 1200  # Timeout increased to 1200 seconds (20 minutes)
+# resource "helm_release" "api" {
+#   name       = "api"
+#   chart      = "../helm/helm-api"  # Path to your API chart directory
+#   version    = "0.1.0"
+#   namespace  = "default"
+#   # timeout    = 1200  # Timeout increased to 1200 seconds (20 minutes)
 
-}
+# }
 
-resource "helm_release" "sql" {
-  name       = "sql"
-  chart      = "../helm/helm-sql"  # Path to your MySQL chart directory
-  version    = "0.1.0"
-  namespace  = "default"
-}
+# resource "helm_release" "sql" {
+#   name       = "sql"
+#   chart      = "../helm/helm-sql"  # Path to your MySQL chart directory
+#   version    = "0.1.0"
+#   namespace  = "default"
+# }

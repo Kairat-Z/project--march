@@ -1,0 +1,7 @@
+mysql:
+  image: mysql:latest
+  database: mydb
+  user: mydbuser
+  password: mydbpass
+  rootPassword: kaizen
+  storage: 1Gi
