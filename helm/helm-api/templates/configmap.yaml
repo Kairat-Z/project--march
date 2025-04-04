@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.env.name }}
+data:
+  DBUSER: "{{ .Values.env.databaseUser }}"
+  PORT: "{{ .Values.api.port }}"
+  DBHOST: "{{ .Values.env.databaseHost }}"
+  DB: "{{ .Values.env.databaseName }}"
+  DBPORT: "{{ .Values.env.databasePort }}"
+
+

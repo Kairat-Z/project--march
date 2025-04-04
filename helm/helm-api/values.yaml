@@ -1,0 +1,16 @@
+api: 
+  name: api
+  port: 3001
+  targetPort: 3001
+  replicas: 3
+  image: zhkairat2/api
+  tag: "0.0.2"
+env:
+  databaseUser: mydbuser
+  name: api-config
+  databaseHost: mysql
+  databaseName: mydb
+  databasePort: "3306"
+secret:
+  name: api-secret
+  dbPass: mydbpass

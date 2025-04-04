@@ -27,9 +27,9 @@ resource "helm_release" "api" {
 
 }
 
-resource "helm_release" "mysql" {
-  name       = "mysql"
-  chart      = "../helm/helm-mysql"  # Path to your MySQL chart directory
+resource "helm_release" "sql" {
+  name       = "sql"
+  chart      = "../helm/helm-sql"  # Path to your MySQL chart directory
   version    = "0.1.0"
   namespace  = "default"
 }

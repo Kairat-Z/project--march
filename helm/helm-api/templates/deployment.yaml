@@ -21,14 +21,40 @@ spec:
     spec:
       containers:
       - name: {{ .Values.api.name }}
-        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        image: "{{ .Values.api.image }}:{{ .Values.api.tag }}"
         ports:
         - containerPort: {{ .Values.api.port }}
-        envFrom:
-        - configMapRef:
-            name: {{ .Values.cm.name }}
-        - secretRef:
-            name: {{ .Values.secret.name }}
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: PORT
+        - name: DB
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: DB
+        - name: DBUSER
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: DBUSER
+        - name: DBHOST
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: DBHOST
+        - name: DBPORT
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: DBPORT
+        - name: DBPASS
+          valueFrom:
+            secretKeyRef:
+              name: api-secret
+              key: DBPASS
         resources:
           requests:
             cpu: "100m"

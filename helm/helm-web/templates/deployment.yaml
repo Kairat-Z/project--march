@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: {{ .Values.web.name }}
   labels:
-    app: devops-web
+    app: web
 spec:
   replicas: {{ .Values.web.replicas }}
   selector:
     matchLabels:
-      app: devops-web
+      app: web
   template:
     metadata:
       labels:
-        app: devops-web
+        app: web
     spec:
       containers:
-      - name: devops-web
+      - name: web
         image: {{ .Values.web.image }}:{{ .Values.web.tag }}
         ports:
         - containerPort: {{ .Values.web.port }}
@@ -23,4 +23,4 @@ spec:
         - name: PORT
           value: "3000"
         - name: API_HOST
-          value: http://devops-api:3001
+          value: http://api:3001
